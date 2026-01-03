@@ -1,27 +1,29 @@
-/* =========================================
-   CORPORATE GRADE CSS - FINAL CLEAN BUILD
-   ========================================= */
-:root {
-    /* Palette */
-    --c-primary: #EE7D89;
-    /* Premium Rose */
-    --c-primary-dark: #D15B68;
-    --c-bg-pure: #FFFFFF;
-    --c-bg-sub: #F9F9FB;
-    --c-text-deep: #2C2C32;
-    --c-text-body: #4A4A52;
-    --c-gold: #C5A059;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Montserrat:wght@700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap');
 
-    /* Typography */
-    --f-sans: 'Noto Sans JP', sans-serif;
-    --f-serif: 'Shippori Mincho', serif;
+:root {
+    /* Palette - High Contrast & Modern */
+    --c-primary: #FF2D55;
+    /* Vibrant Neon Rose */
+    --c-primary-dark: #D00036;
+    --c-secondary: #007AFF;
+    /* Tech Blue */
+    --c-bg-pure: #FFFFFF;
+    --c-bg-sub: #F2F2F7;
+    --c-text-deep: #1C1C1E;
+    --c-text-body: #3A3A3C;
+    --c-gold: #D4AF37;
+
+    /* Typography - More Modern & Assertive */
+    --f-sans: 'Inter', 'Noto Sans JP', sans-serif;
+    --f-head: 'Montserrat', 'Noto Sans JP', sans-serif;
 
     /* Spacing */
-    --header-h: 76px;
+    --header-h: 80px;
 
     /* Effects */
-    --shadow-lv1: 0 4px 12px rgba(0, 0, 0, 0.04);
-    --shadow-lv2: 0 12px 30px rgba(0, 0, 0, 0.08);
+    --shadow-lv1: 0 4px 20px rgba(0, 0, 0, 0.06);
+    --shadow-lv2: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --glass: rgba(255, 255, 255, 0.8);
 }
 
 /* Base Reset */
@@ -98,11 +100,12 @@ a {
 }
 
 .header-logo {
-    font-family: var(--f-serif);
-    font-weight: 700;
+    font-family: var(--f-head);
+    font-weight: 900;
     color: var(--c-text-deep);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     line-height: 1;
+    letter-spacing: -0.03em;
 }
 
 .header-copy {
@@ -165,23 +168,21 @@ a {
 .fv-main-stage {
     position: relative;
     width: 100%;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    min-height: 550px;
+    min-height: 650px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
+    justify-content: flex-start;
+    padding: 0 40px;
 }
 
 /* Text Layer */
 .fv-text-layer {
-    flex: 1;
-    max-width: 550px;
+    flex: 0 0 55%;
     z-index: 10;
-    padding: 40px 0;
+    padding: 60px 0;
     text-align: left;
-    /* Keep Headline Left for PC Split Layout */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -202,35 +203,31 @@ a {
     height: 100%;
     object-fit: cover;
     object-position: center top;
-    mask-image: linear-gradient(to left, black 85%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to left, black 85%, transparent 100%);
-    border-radius: 20px 0 0 20px;
-}
-
-.fv-visual-overlay {
-    display: none;
+    mask-image: linear-gradient(to left, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, black 70%, transparent 100%);
 }
 
 /* Content Styles */
 .fv-sub-copy {
     display: inline-block;
-    font-family: var(--f-serif);
-    color: var(--c-gold);
-    border: 1px solid var(--c-gold);
-    padding: 6px 18px;
+    font-family: var(--f-head);
+    font-weight: 700;
+    color: white;
+    background: var(--c-text-deep);
+    padding: 8px 20px;
     font-size: 0.9rem;
     margin-bottom: 24px;
-    background: white;
+    letter-spacing: 0.1em;
 }
 
 .fv-main-copy {
-    font-family: var(--f-sans);
-    font-weight: 700;
-    font-size: 3.2rem;
+    font-family: var(--f-head);
+    font-weight: 900;
+    font-size: 3.8rem;
     color: var(--c-text-deep);
-    line-height: 1.3;
+    line-height: 1.1;
     margin-bottom: 40px;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.04em;
 }
 
 .gold-text {
@@ -315,53 +312,60 @@ a {
 }
 
 .screen-1 {
-    color: #F00;
-    top: 25%;
-    left: 45%;
+    color: #FF0000;
+    top: 15%;
+    left: 48%;
     animation: float 6s infinite ease-in-out;
 }
 
 .screen-2 {
     color: #000;
-    bottom: 30%;
-    left: 40%;
+    bottom: 40%;
+    left: 42%;
     animation: float 8s infinite ease-in-out reverse;
+}
+
+.screen-3 {
+    color: #E1306C;
+    top: 40%;
+    left: 52%;
+    animation: float 7s infinite ease-in-out;
 }
 
 @keyframes float {
 
     0%,
     100% {
-        transform: translateY(0);
+        transform: translateY(0) rotate(0deg);
     }
 
     50% {
-        transform: translateY(-15px);
+        transform: translateY(-20px) rotate(5deg);
     }
 }
 
-/* =========================================
-   Sections: Problem & Solution
-   ========================================= */
-.problem-section {
-    padding: 80px 0;
-    background: var(--c-bg-sub);
-    text-align: center;
-}
-
-.section-header {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 60px;
-}
-
+/* Section Headers */
 .section-title-sm {
-    font-family: var(--f-serif);
-    font-size: 2rem;
+    font-family: var(--f-head);
+    font-size: 2.8rem;
     color: var(--c-text-deep);
+    font-weight: 900;
+    letter-spacing: -0.04em;
     position: relative;
     display: inline-block;
     padding-bottom: 15px;
+}
+
+.section-title-sm::before {
+    content: attr(data-en);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    color: var(--c-primary);
+    letter-spacing: 0.3em;
+    font-weight: 700;
 }
 
 .section-title-sm::after {
@@ -479,25 +483,31 @@ a {
    Authority Section
    ========================================= */
 .authority-section {
-    padding: 100px 0;
-    background: white;
+    padding: 120px 0;
+    background: var(--c-text-deep);
+    color: white;
     text-align: center;
 }
 
 .auth-title {
-    font-family: var(--f-serif);
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 30px;
-    color: var(--c-text-deep);
+    font-family: var(--f-head);
+    font-size: 2.4rem;
+    font-weight: 900;
+    margin-bottom: 40px;
+    color: white;
 }
 
 .auth-desc {
-    font-size: 1.05rem;
-    line-height: 2;
-    max-width: 800px;
+    font-size: 1.1rem;
+    line-height: 2.2;
+    max-width: 850px;
     margin: 0 auto;
-    color: var(--c-text-body);
+    color: #BBB;
+}
+
+.auth-desc strong {
+    color: white;
+    border-bottom: 2px solid var(--c-primary);
 }
 
 /* =========================================
@@ -597,30 +607,14 @@ a {
     }
 
     .header-logo {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
-    .header-btn {
-        padding: 6px 14px;
-        font-size: 0.8rem;
-    }
-
-    /* FV */
-    .fv-section-new {
-        padding-top: 60px;
-        padding-bottom: 40px;
-    }
-
-    .fv-main-stage {
-        display: block;
-        min-height: auto;
-        padding: 0;
-    }
-
+    /* FV Mobile - Improved Overlap Prevention */
     .fv-visual-layer {
         position: relative;
         width: 100%;
-        height: 50vh;
+        height: 60vh;
         top: auto;
         right: auto;
         bottom: auto;
@@ -631,45 +625,48 @@ a {
         height: 100%;
         position: relative;
         border-radius: 0;
-        mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-        -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     }
 
     .fv-text-layer {
         width: 100%;
-        margin: -60px 0 0;
-        /* Integrate Overlay */
-        padding: 30px 20px;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #FFF 20%);
+        margin: -80px 0 0;
+        padding: 40px 20px;
+        background: white;
+        border-radius: 30px 30px 0 0;
         position: relative;
         z-index: 20;
         align-items: center;
-        /* Center SP Text */
         text-align: center;
+        box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.1);
     }
 
     .fv-main-copy {
-        font-size: 2.2rem;
-        margin-bottom: 20px;
+        font-size: 2.5rem;
+        margin-bottom: 30px;
         text-align: center;
-    }
-
-    .cta-button {
-        width: 100%;
-        padding: 18px;
-        max-width: none;
-        font-size: 1rem;
+        line-height: 1.2;
     }
 
     .screen-1 {
-        top: 20%;
-        left: 10%;
+        top: 10%;
+        left: 5%;
+        font-size: 1.2rem;
     }
 
     .screen-2 {
-        top: 30%;
-        right: 10%;
+        top: 20%;
+        right: 5%;
         bottom: auto;
+        left: auto;
+        font-size: 1.2rem;
+    }
+
+    .screen-3 {
+        top: 5%;
+        left: 40%;
+        font-size: 1.2rem;
     }
 
     /* Grid */
