@@ -192,10 +192,12 @@ a {
 /* Visual Layer - Full Background */
 .fv-visual-layer {
     position: absolute;
-    top: 0;
+    /* Move Visual Layer DOWN to leave white space for Zone A Text */
+    top: 100px;
     left: 0;
     width: 100%;
-    height: 100%;
+    /* Remaining height */
+    height: calc(100% - 100px);
     z-index: 1;
 }
 
@@ -203,8 +205,11 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Face at ~35-40% from top to clear Zone A */
-    object-position: center 25%;
+    /* Align top of image to top of container, so head (if at top) starts there */
+    object-position: center top;
+    /* Blend top edge if needed, or rely on white background match */
+    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 100%);
 }
 
 /* Text Layer - Overlay */
@@ -828,9 +833,18 @@ a {
 
     /* Visual Override */
     .fv-visual-layer {
-        height: 100%;
-        /* Full height */
+        top: 80px;
+        /* Push down on mobile too */
+        height: calc(100% - 80px);
+        width: 100%;
         position: absolute;
+    }
+
+    .fv-hero-img {
+        object-position: center top;
+        /* Ensure top fade for seamless blend */
+        mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 100%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 100%);
     }
 
     /* Grid */
