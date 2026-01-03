@@ -139,12 +139,16 @@ a {
 /* =========================================
    FV: Premium Banner Style (Center Focused)
    ========================================= */
+/* =========================================
+   FV: Premium Banner Style (Stacked Layout to Avoid Overlap)
+   ========================================= */
 .fv-section-new {
     padding-top: var(--header-h);
     background: linear-gradient(to bottom, #FFF 0%, #FFF5F6 100%);
     position: relative;
     overflow: hidden;
-    padding-bottom: 60px;
+    padding-bottom: 0;
+    /* Let stage handle bottom */
     text-align: center;
 }
 
@@ -152,7 +156,6 @@ a {
 .fv-top-bar,
 .fv-bottom-bar {
     background: var(--c-text-deep);
-    /* Mocha */
     color: #F8F8F8;
     font-size: 0.8rem;
     font-weight: 500;
@@ -167,68 +170,69 @@ a {
 .fv-bottom-bar {
     background: #E8C37E;
     color: var(--c-text-deep);
-    /* Contrast on Gold */
     font-weight: 700;
 }
 
 .fv-bottom-bar p {
     margin: 0;
     display: inline-block;
-    text-align: center;
 }
 
-/* Main Stage - Separated Layout Concept within Overlay */
+/* Main Stage - Flex Stack */
 .fv-main-stage {
     position: relative;
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
-    height: 800px;
-    /* Taller to fit vertical stack */
-    display: block;
-    background: linear-gradient(to bottom, #FFF 0%, #FFF5F6 30%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* Remove fixed height to allow content to dictate, but set min-height */
+    min-height: 800px;
+    background: transparent;
     overflow: hidden;
     border-radius: 0 0 30px 30px;
 }
 
-/* Visual Layer - Pushed Down */
-.fv-visual-layer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+/* Text Layer - Top Block */
+.fv-text-layer {
+    position: relative;
     width: 100%;
-    height: 75%;
-    /* Image takes bottom 75% */
+    z-index: 10;
+    padding-top: 60px;
+    padding-bottom: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 auto;
+    /* Do not shrink */
+}
+
+/* Visual Layer - Bottom Block */
+.fv-visual-layer {
+    position: relative;
+    width: 100%;
+    flex: 1 1 auto;
+    /* Fill remaining space */
+    min-height: 500px;
+    /* Ensure tall enough to show person */
     z-index: 1;
+    margin-top: -20px;
+    /* Slight overlap for blending if needed, but safe */
 }
 
 .fv-hero-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 20%;
-    /* Lower the focus significantly */
-    mask-image: linear-gradient(to top, black 80%, transparent 100%);
-    /* Soft fade at top of image */
-    -webkit-mask-image: linear-gradient(to top, black 80%, transparent 100%);
+    object-position: center top;
+    /* Show head at top */
+    mask-image: linear-gradient(to top, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to top, black 90%, transparent 100%);
 }
 
-/* Text Layer - Relative Top Block */
-.fv-text-layer {
-    position: relative;
-    /* Changed from absolute to flow naturally at top */
-    width: 100%;
-    z-index: 10;
-    padding-top: 40px;
-    padding-bottom: 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-/* Content Styles */
 /* Content Styles */
 .fv-sub-copy {
     display: inline-block;
@@ -252,7 +256,8 @@ a {
     color: var(--c-text-deep);
     line-height: 1.25;
     margin-bottom: 20px;
-    text-shadow: 0 0 30px rgba(255, 255, 255, 0.9);
+    /* Soft shadow instead of strong glow */
+    text-shadow: 0 4px 20px rgba(255, 255, 255, 1);
 }
 
 .gold-text {
@@ -264,8 +269,7 @@ a {
     padding: 0 5px;
 }
 
-/* FV CTA (Separate from Global) */
-/* FV CTA - Position Absolute Bottom */
+/* FV CTA - Positioned Absolute at Bottom of Stage */
 .fv-cta-container {
     width: 100%;
     position: absolute;
@@ -276,7 +280,6 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Explicit center */
 }
 
 /* Global CTA Button */
@@ -286,7 +289,6 @@ a {
     justify-content: center;
     gap: 15px;
     background: #8DAF9E;
-    /* Natural Green */
     color: white;
     width: 100%;
     max-width: 480px;
@@ -299,7 +301,6 @@ a {
     text-decoration: none;
     margin: 0 auto;
     border: 3px solid white;
-    /* Cute border */
 }
 
 .cta-button:hover {
@@ -328,58 +329,10 @@ a {
     font-size: 0.8rem;
 }
 
-/* Floating Decor */
+/* Floating Decor - Removed or Moved */
 .floating-decor {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    font-size: 1.5rem;
-    z-index: 5;
-}
-
-/* Decor - Avoid Face (Center) Area */
-.screen-1 {
-    color: #FF0000;
-    top: 10%;
-    left: 10%;
-    /* Move far left */
-    animation: float 6s infinite ease-in-out;
-}
-
-.screen-2 {
-    color: #000;
-    bottom: 20%;
-    right: 10%;
-    /* Move far right bottom */
-    left: auto;
-    animation: float 8s infinite ease-in-out reverse;
-}
-
-.screen-3 {
-    color: #E1306C;
-    top: 15%;
-    right: 10%;
-    /* Move far right top */
-    left: auto;
-    animation: float 7s infinite ease-in-out;
-}
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-20px) rotate(5deg);
-    }
+    display: none;
+    /* Hide per request to clear face */
 }
 
 /* Section Headers */
@@ -389,6 +342,7 @@ a {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin-bottom: 60px;
 }
 
 .section-title-sm {
@@ -400,7 +354,6 @@ a {
     position: relative;
     display: inline-block;
     padding-bottom: 15px;
-    /* Ensure Centering */
     margin: 0 auto;
     text-align: center;
 }
@@ -415,6 +368,7 @@ a {
     color: var(--c-primary);
     letter-spacing: 0.3em;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .section-title-sm::after {
@@ -450,32 +404,30 @@ a {
     border-radius: 20px;
     box-shadow: var(--shadow-lv2);
     padding: 20px;
-    /* Center text inside */
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Centered Check Items but keeping internal layout */
+/* Centered Check Items */
 .check-item {
     display: flex;
     align-items: center;
     background: white;
-    margin: 10px;
+    margin: 10px auto;
+    /* Force center */
     padding: 24px;
     border-radius: 12px;
     transition: transform 0.3s;
     width: 100%;
-    /* Full width in container */
     max-width: 700px;
-    /* Limit width */
     text-align: left;
-    /* Keep internal text left logic */
+    /* Text inside remains left */
 }
 
 .check-item:hover {
-    transform: translateX(10px);
+    transform: translateX(5px);
 }
 
 .check-box {
@@ -527,10 +479,8 @@ a {
 .recipe-grid {
     display: grid;
     grid-template-columns: 1fr;
-    /* Force 1 column */
     gap: 40px;
     max-width: 600px;
-    /* Constrain width for single column */
     margin: 0 auto;
     text-align: left;
 }
@@ -603,7 +553,6 @@ a {
 .authority-section {
     padding: 120px 0;
     background: #F8F6F4;
-    /* Light warm gray */
     color: var(--c-text-deep);
     text-align: center;
 }
@@ -650,7 +599,6 @@ a {
 
 .cta-header-box {
     background: var(--c-primary);
-    /* Use Primary instead of black */
     color: white;
     padding: 40px 20px;
 }
@@ -687,7 +635,6 @@ a {
     line-height: 2;
 }
 
-/* Button overrides for Last CTA context if needed */
 .last-cta-section .cta-button {
     margin: 0 auto;
 }
@@ -732,43 +679,36 @@ a {
         font-size: 1.2rem;
     }
 
-    /* FV Mobile - Layout Logic */
+    /* FV Mobile - Flex Stack */
+    .fv-section-new {
+        padding-top: 60px;
+    }
+
+    .fv-main-stage {
+        min-height: 100vh;
+        /* Fill screen */
+        height: auto;
+    }
+
+    .fv-text-layer {
+        padding-top: 30px;
+        flex: 0 0 auto;
+    }
+
     .fv-visual-layer {
-        height: 60%;
-        /* Image takes 60% of height */
-        bottom: 0;
+        height: auto;
+        min-height: 400px;
+        /* Ensure image is visible */
+        flex: 1 1 auto;
     }
 
     .fv-hero-img {
         object-position: center top;
-        /* On mobile, top of image might be face, so show top */
-        mask-image: none;
-        -webkit-mask-image: none;
-    }
-
-    .fv-text-layer {
-        position: relative;
-        padding-top: 20px;
-    }
-
-    .fv-main-stage {
-        height: 100vh;
-        /* Full screen height for mobile impact */
-        max-height: 800px;
     }
 
     .fv-main-copy {
         font-size: 2.0rem;
         margin-bottom: 10px;
-        text-shadow: none;
-        /* Text is on white/pale bg now mostly */
-        color: var(--c-text-deep);
-    }
-
-    .screen-1,
-    .screen-2,
-    .screen-3 {
-        display: none;
     }
 
     /* Grid */
@@ -777,6 +717,7 @@ a {
     }
 
     .check-item {
+        margin: 10px auto;
         align-items: flex-start;
     }
 
