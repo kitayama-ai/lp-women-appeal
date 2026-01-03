@@ -384,6 +384,19 @@ a {
     display: block;
 }
 
+.cta-text-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 4px;
+}
+
+.cta-main {
+    font-size: 1.4rem;
+    font-weight: 900;
+}
+
 .cta-sub {
     color: #E8F5E9;
     margin-bottom: 5px;
@@ -549,8 +562,6 @@ a {
     color: var(--c-text-deep);
     width: 100%;
     letter-spacing: -0.04em;
-    display: flex;
-    justify-content: center;
 }
 
 /* Grid - Single Column Always */
