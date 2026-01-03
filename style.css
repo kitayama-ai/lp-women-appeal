@@ -567,9 +567,9 @@ a {
 }
 
 .section-title .title-sub {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-weight: 700;
     color: var(--c-text-body);
 }
@@ -921,7 +921,7 @@ a {
     }
 
     .section-title .title-sub {
-        font-size: 0.9rem;
+        font-size: 1.6rem;
     }
 
     .section-title .title-main {
