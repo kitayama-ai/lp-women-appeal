@@ -752,36 +752,85 @@ a {
         font-size: 1.2rem;
     }
 
-    /* FV Mobile - Flex Stack */
+    /* FV Mobile - Zone Layout */
     .fv-section-new {
         padding-top: 60px;
     }
 
     .fv-main-stage {
-        min-height: 100vh;
-        /* Fill screen */
-        height: auto;
+        height: 100vh;
+        max-height: 800px;
+        /* Ensure it behaves like PC container */
+        display: block;
     }
 
+    /* Reset Flex Stack junk if any remaining */
     .fv-text-layer {
-        padding-top: 30px;
-        flex: 0 0 auto;
+        position: absolute;
+        padding-top: 0;
+        display: block;
+        /* No flex */
     }
 
-    .fv-visual-layer {
-        height: auto;
-        min-height: 400px;
-        /* Ensure image is visible */
-        flex: 1 1 auto;
-    }
-
-    .fv-hero-img {
-        object-position: center top;
+    .fv-zone-a {
+        top: 20px;
+        /* Closer to top on mobile */
+        padding: 0 10px;
     }
 
     .fv-main-copy {
-        font-size: 2.0rem;
+        font-size: 2rem;
+        /* Smaller font */
         margin-bottom: 10px;
+    }
+
+    .fv-sub-copy {
+        font-size: 0.8rem;
+        padding: 6px 16px;
+    }
+
+    /* Icons - Squeeze slightly */
+    .floating-decor {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .screen-1 {
+        left: 5%;
+        top: 35%;
+    }
+
+    .screen-2 {
+        left: 10%;
+        top: 50%;
+    }
+
+    .screen-3 {
+        right: 5%;
+        top: 40%;
+    }
+
+    /* Zone B - Bottom */
+    .fv-zone-b {
+        bottom: 20px;
+    }
+
+    .cta-button {
+        padding: 15px;
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    .cta-sub {
+        font-size: 0.75rem;
+    }
+
+    /* Visual Override */
+    .fv-visual-layer {
+        height: 100%;
+        /* Full height */
+        position: absolute;
     }
 
     /* Grid */
