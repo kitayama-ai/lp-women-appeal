@@ -177,25 +177,28 @@ a {
     text-align: center;
 }
 
-/* Main Stage */
+/* Main Stage - Separated Layout Concept within Overlay */
 .fv-main-stage {
     position: relative;
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
-    /* Main Aspect Ratio for Overlay */
-    height: 700px;
+    height: 800px;
+    /* Taller to fit vertical stack */
     display: block;
-    padding: 0;
+    background: linear-gradient(to bottom, #FFF 0%, #FFF5F6 30%, transparent 100%);
     overflow: hidden;
     border-radius: 0 0 30px 30px;
 }
 
-/* Visual Layer - Full Background */
+/* Visual Layer - Pushed Down */
 .fv-visual-layer {
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
+    height: 75%;
+    /* Image takes bottom 75% */
     z-index: 1;
 }
 
@@ -203,25 +206,26 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
-    /* No masks */
-    mask-image: none;
-    -webkit-mask-image: none;
+    object-position: center 20%;
+    /* Lower the focus significantly */
+    mask-image: linear-gradient(to top, black 80%, transparent 100%);
+    /* Soft fade at top of image */
+    -webkit-mask-image: linear-gradient(to top, black 80%, transparent 100%);
 }
 
-/* Text Layer - Overlay Top Center */
+/* Text Layer - Relative Top Block */
 .fv-text-layer {
-    position: absolute;
-    top: 50px;
-    left: 0;
+    position: relative;
+    /* Changed from absolute to flow naturally at top */
     width: 100%;
     z-index: 10;
-    padding: 0 20px;
+    padding-top: 40px;
+    padding-bottom: 20px;
     text-align: center;
-    background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
 }
 
 /* Content Styles */
@@ -261,17 +265,18 @@ a {
 }
 
 /* FV CTA (Separate from Global) */
-/* FV CTA - Position Lower to avoid Face */
+/* FV CTA - Position Absolute Bottom */
 .fv-cta-container {
     width: 100%;
-    margin-top: auto;
-    /* Push to bottom if flex container has height */
     position: absolute;
-    bottom: 40px;
-    /* Pin to bottom area */
+    bottom: 30px;
     left: 0;
     z-index: 20;
     padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Explicit center */
 }
 
 /* Global CTA Button */
@@ -727,33 +732,37 @@ a {
         font-size: 1.2rem;
     }
 
-    /* FV Mobile - Overlay Style */
+    /* FV Mobile - Layout Logic */
     .fv-visual-layer {
-        height: 600px;
-        width: 100%;
+        height: 60%;
+        /* Image takes 60% of height */
+        bottom: 0;
     }
 
     .fv-hero-img {
-        object-position: center 25%;
-        /* Lower focus to show face lower */
+        object-position: center top;
+        /* On mobile, top of image might be face, so show top */
         mask-image: none;
         -webkit-mask-image: none;
     }
 
     .fv-text-layer {
-        top: 20px;
-        margin-top: 0;
-        padding: 0 15px;
-        position: absolute;
-        width: 100%;
-        background: transparent;
-        box-shadow: none;
+        position: relative;
+        padding-top: 20px;
+    }
+
+    .fv-main-stage {
+        height: 100vh;
+        /* Full screen height for mobile impact */
+        max-height: 800px;
     }
 
     .fv-main-copy {
         font-size: 2.0rem;
-        margin-bottom: 15px;
-        text-shadow: 0 2px 8px rgba(255, 255, 255, 0.9);
+        margin-bottom: 10px;
+        text-shadow: none;
+        /* Text is on white/pale bg now mostly */
+        color: var(--c-text-deep);
     }
 
     .screen-1,
