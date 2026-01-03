@@ -1,0 +1,705 @@
+/* =========================================
+   CORPORATE GRADE CSS - FINAL CLEAN BUILD
+   ========================================= */
+:root {
+    /* Palette */
+    --c-primary: #EE7D89;
+    /* Premium Rose */
+    --c-primary-dark: #D15B68;
+    --c-bg-pure: #FFFFFF;
+    --c-bg-sub: #F9F9FB;
+    --c-text-deep: #2C2C32;
+    --c-text-body: #4A4A52;
+    --c-gold: #C5A059;
+
+    /* Typography */
+    --f-sans: 'Noto Sans JP', sans-serif;
+    --f-serif: 'Shippori Mincho', serif;
+
+    /* Spacing */
+    --header-h: 76px;
+
+    /* Effects */
+    --shadow-lv1: 0 4px 12px rgba(0, 0, 0, 0.04);
+    --shadow-lv2: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Base Reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--f-sans);
+    color: var(--c-text-body);
+    background-color: var(--c-bg-pure);
+    line-height: 1.75;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.sp-only {
+    display: none;
+}
+
+.pc-only {
+    display: block;
+}
+
+/* =========================================
+   Header
+   ========================================= */
+.header {
+    height: var(--header-h);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.header-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.logo-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-logo {
+    font-family: var(--f-serif);
+    font-weight: 700;
+    color: var(--c-text-deep);
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.header-copy {
+    font-size: 0.7rem;
+    color: #666;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.header-btn {
+    background: var(--c-primary);
+    color: white;
+    padding: 8px 24px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+/* =========================================
+   FV: Premium Banner Style (Center Focused)
+   ========================================= */
+.fv-section-new {
+    padding-top: var(--header-h);
+    background: linear-gradient(to bottom, #FFF 0%, #FFF5F6 100%);
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+/* Gold Bar */
+.fv-top-bar,
+.fv-bottom-bar {
+    background: #2C2C32;
+    color: #C5A059;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 10px;
+    letter-spacing: 0.05em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fv-bottom-bar {
+    background: linear-gradient(90deg, #C6A665 0%, #E3CD94 50%, #C6A665 100%);
+    color: white;
+    font-weight: 700;
+}
+
+.fv-bottom-bar p {
+    margin: 0;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Main Stage */
+.fv-main-stage {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+/* Text Layer */
+.fv-text-layer {
+    flex: 1;
+    max-width: 550px;
+    z-index: 10;
+    padding: 40px 0;
+    text-align: left;
+    /* Keep Headline Left for PC Split Layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Visual Layer */
+.fv-visual-layer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    z-index: 1;
+}
+
+.fv-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    mask-image: linear-gradient(to left, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, black 85%, transparent 100%);
+    border-radius: 20px 0 0 20px;
+}
+
+.fv-visual-overlay {
+    display: none;
+}
+
+/* Content Styles */
+.fv-sub-copy {
+    display: inline-block;
+    font-family: var(--f-serif);
+    color: var(--c-gold);
+    border: 1px solid var(--c-gold);
+    padding: 6px 18px;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+    background: white;
+}
+
+.fv-main-copy {
+    font-family: var(--f-sans);
+    font-weight: 700;
+    font-size: 3.2rem;
+    color: var(--c-text-deep);
+    line-height: 1.3;
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+}
+
+.gold-text {
+    color: var(--c-primary);
+}
+
+.big-emphasis {
+    background: linear-gradient(transparent 60%, rgba(197, 160, 89, 0.3) 60%);
+    padding: 0 5px;
+}
+
+/* FV CTA (Separate from Global) */
+.fv-cta-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 40px auto;
+}
+
+/* Global CTA Button */
+.cta-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background: #06C755;
+    color: white;
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+    border-radius: 50px;
+    box-shadow: 0 8px 15px rgba(6, 199, 85, 0.25);
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    margin: 0 auto;
+    /* Force Center */
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(6, 199, 85, 0.35);
+}
+
+.cta-sub,
+.cta-micro {
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+
+.cta-sub {
+    color: #E8F5E9;
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.cta-micro {
+    color: #999;
+    margin-top: 10px;
+    font-weight: normal;
+    font-size: 0.8rem;
+}
+
+/* Floating Decor */
+.floating-decor {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    font-size: 1.5rem;
+    z-index: 5;
+}
+
+.screen-1 {
+    color: #F00;
+    top: 25%;
+    left: 45%;
+    animation: float 6s infinite ease-in-out;
+}
+
+.screen-2 {
+    color: #000;
+    bottom: 30%;
+    left: 40%;
+    animation: float 8s infinite ease-in-out reverse;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* =========================================
+   Sections: Problem & Solution
+   ========================================= */
+.problem-section {
+    padding: 80px 0;
+    background: var(--c-bg-sub);
+    text-align: center;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+}
+
+.section-title-sm {
+    font-family: var(--f-serif);
+    font-size: 2rem;
+    color: var(--c-text-deep);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.section-title-sm::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: var(--c-gold);
+}
+
+.problem-checklist {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: var(--shadow-lv2);
+    padding: 30px;
+    text-align: left;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #F0F0F0;
+    padding: 15px;
+}
+
+.check-box {
+    width: 40px;
+    height: 40px;
+    background: #EEE;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: #999;
+    flex-shrink: 0;
+}
+
+.check-item p {
+    flex: 1;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.solution-section {
+    padding: 100px 0;
+    text-align: center;
+    background: white;
+}
+
+.section-title {
+    font-family: var(--f-serif);
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 60px;
+    color: var(--c-text-deep);
+    width: 100%;
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+    /* Keep card text left */
+}
+
+.recipe-card {
+    border: 1px solid #EEE;
+    padding: 30px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+    position: relative;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lv2);
+    border-color: transparent;
+}
+
+.card-badge {
+    background: var(--c-gold);
+    color: white;
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.recipe-card h4 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-family: var(--f-serif);
+    border-bottom: 1px solid #F0F0F0;
+    padding-bottom: 10px;
+}
+
+.recipe-card p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.8;
+}
+
+/* =========================================
+   Authority Section
+   ========================================= */
+.authority-section {
+    padding: 100px 0;
+    background: white;
+    text-align: center;
+}
+
+.auth-title {
+    font-family: var(--f-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--c-text-deep);
+}
+
+.auth-desc {
+    font-size: 1.05rem;
+    line-height: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--c-text-body);
+}
+
+/* =========================================
+   Last CTA Section
+   ========================================= */
+.last-cta-section {
+    padding: 80px 0 100px;
+    background: #FFF5F6;
+    text-align: center;
+}
+
+.last-cta-box {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(238, 125, 137, 0.2);
+}
+
+.cta-header-box {
+    background: #2C2C32;
+    color: white;
+    padding: 40px 20px;
+}
+
+.limit-badge {
+    background: var(--c-gold);
+    color: white;
+    padding: 4px 12px;
+    font-weight: 700;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.cta-header-box h3 {
+    font-size: 2rem;
+    font-family: var(--f-serif);
+    margin-bottom: 10px;
+    color: white;
+}
+
+.cta-body-box {
+    padding: 50px 30px;
+}
+
+.present-text {
+    font-weight: 700;
+    color: var(--c-text-deep);
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    line-height: 2;
+}
+
+/* Button overrides for Last CTA context if needed */
+.last-cta-section .cta-button {
+    margin: 0 auto;
+}
+
+.cta-icon {
+    font-size: 2rem;
+}
+
+.btn-text-group {
+    text-align: left;
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+.footer {
+    background: #2C2C32;
+    color: #888;
+    padding: 30px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+/* =========================================
+   Mobile Optimization
+   ========================================= */
+@media (max-width: 900px) {
+    .sp-only {
+        display: block;
+    }
+
+    .pc-only {
+        display: none;
+    }
+
+    /* Header */
+    .header {
+        height: 60px;
+    }
+
+    .header-logo {
+        font-size: 1rem;
+    }
+
+    .header-btn {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+    }
+
+    /* FV */
+    .fv-section-new {
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+
+    .fv-main-stage {
+        display: block;
+        min-height: auto;
+        padding: 0;
+    }
+
+    .fv-visual-layer {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+        top: auto;
+        right: auto;
+        bottom: auto;
+    }
+
+    .fv-hero-img {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        border-radius: 0;
+        mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    }
+
+    .fv-text-layer {
+        width: 100%;
+        margin: -60px 0 0;
+        /* Integrate Overlay */
+        padding: 30px 20px;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #FFF 20%);
+        position: relative;
+        z-index: 20;
+        align-items: center;
+        /* Center SP Text */
+        text-align: center;
+    }
+
+    .fv-main-copy {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .cta-button {
+        width: 100%;
+        padding: 18px;
+        max-width: none;
+        font-size: 1rem;
+    }
+
+    .screen-1 {
+        top: 20%;
+        left: 10%;
+    }
+
+    .screen-2 {
+        top: 30%;
+        right: 10%;
+        bottom: auto;
+    }
+
+    /* Grid */
+    .recipe-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .check-item {
+        align-items: flex-start;
+    }
+
+    .check-box {
+        margin-top: 5px;
+    }
+
+    /* Last CTA */
+    .cta-header-box h3 {
+        font-size: 1.5rem;
+    }
+
+    .btn-text-group {
+        text-align: center;
+    }
+
+    .last-cta-section .cta-button {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cta-icon {
+        margin-bottom: 5px;
+    }
+}
