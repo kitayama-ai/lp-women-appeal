@@ -177,16 +177,16 @@ a {
     display: inline-block;
 }
 
-/* Main Stage - Container */
+/* Main Stage - Zone Layout */
 .fv-main-stage {
     position: relative;
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
-    /* Fixed Height Strategy for Overlay Control */
     height: 750px;
     overflow: hidden;
     border-radius: 0 0 30px 30px;
+    background: #FFF;
 }
 
 /* Visual Layer - Full Background */
@@ -203,11 +203,11 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* CRITICAL: Push face down to approx 40% line */
-    object-position: center 20%;
+    /* Face at ~35-40% from top to clear Zone A */
+    object-position: center 25%;
 }
 
-/* Text Layer - Overlay Flex Column */
+/* Text Layer - Overlay */
 .fv-text-layer {
     position: absolute;
     top: 0;
@@ -215,32 +215,89 @@ a {
     width: 100%;
     height: 100%;
     z-index: 10;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    /* Push Top / Bottom apart */
-    align-items: center;
-    padding: 40px 20px;
+    /* No flex here, using sub-zones */
 }
 
-/* Zone 1: Top Content (Text) */
-.fv-content-top {
-    margin-top: 20px;
-    /* Space from top */
-    background: rgba(255, 255, 255, 0.4);
-    /* Subtle legibility boost if hair touches */
-    padding: 20px;
-    border-radius: 20px;
-    backdrop-filter: blur(2px);
-}
-
-/* Zone 3: Bottom Content (CTA) */
-.fv-content-bottom {
+/* Zone A: Top Text */
+.fv-zone-a {
+    position: absolute;
+    top: 60px;
+    /* Header clearance */
+    left: 0;
     width: 100%;
+    text-align: center;
+    padding: 0 15px;
+    z-index: 15;
+}
+
+/* Zone B: Bottom CTA */
+.fv-zone-b {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0 15px;
+    z-index: 15;
+}
+
+/* Zone C & D: Icons */
+/* Icons need to be in the "middle" vertical space (between A and B) */
+/* C is Left, D is Right */
+
+.floating-decor {
+    position: absolute;
     display: flex;
+    /* Ensure they show */
+    align-items: center;
     justify-content: center;
-    padding-bottom: 30px;
-    /* Space from bottom */
+    background: white;
+    border-radius: 12px;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    font-size: 1.5rem;
+    z-index: 12;
+}
+
+/* C Area (Left Middle) */
+.screen-1 {
+    color: #FF0000;
+    /* Youtube */
+    top: 40%;
+    left: 10%;
+    animation: float 6s infinite ease-in-out;
+}
+
+.screen-2 {
+    color: #000;
+    /* Tiktok */
+    top: 55%;
+    left: 15%;
+    animation: float 8s infinite ease-in-out reverse;
+}
+
+/* D Area (Right Middle) */
+.screen-3 {
+    color: #E1306C;
+    /* Insta */
+    top: 45%;
+    right: 10%;
+    left: auto;
+    /* Reset left */
+    animation: float 7s infinite ease-in-out;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
 }
 
 /* Content Styles */
@@ -279,16 +336,14 @@ a {
     padding: 0 5px;
 }
 
-/* FV CTA - Positioned Absolute at Bottom of Stage */
+/* CTA Container Reset */
 .fv-cta-container {
     width: 100%;
-    position: relative;
-    /* Reset from absolute */
-    bottom: auto;
-    left: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    /* Inside Zone B */
 }
 
 /* Global CTA Button */
@@ -340,8 +395,17 @@ a {
 
 /* Floating Decor - Removed or Moved */
 .floating-decor {
-    display: none;
-    /* Hide per request to clear face */
+    display: flex;
+    /* Ensure they show */
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 12px;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    font-size: 1.5rem;
+    z-index: 12;
 }
 
 /* Section Headers */
