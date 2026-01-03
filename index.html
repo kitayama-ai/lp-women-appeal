@@ -37,42 +37,51 @@
         <div class="fv-main-stage">
             <!-- Background Visual Layer -->
             <div class="fv-visual-layer">
-                <img src="./hero_woman.png" alt="ビデオエディターの女性" class="fv-hero-img">
-                <div class="fv-visual-overlay"></div> <!-- Gradient fade for text readability -->
+                <!-- Visual Layer (Background) -->
+                <div class="fv-visual-layer">
+                    <img src="./hero_woman.png" alt="ビデオエディターの女性" class="fv-hero-img">
+                    <div class="fv-visual-overlay"></div>
+                </div>
 
-                <!-- Floating Decor (Screens/Sparkles) -->
-                <div class="floating-decor screen-1"><i class="fa-brands fa-youtube"></i></div>
-                <div class="floating-decor screen-2"><i class="fa-brands fa-tiktok"></i></div>
-                <div class="floating-decor screen-3"><i class="fa-brands fa-instagram"></i></div>
-                <div class="floating-decor sparkle-1">✨</div>
-                <div class="floating-decor sparkle-2">✨</div>
-            </div>
+                <!-- Text Content Layer (Flex Overlay) -->
+                <div class="fv-text-layer fade-in-up">
 
-            <!-- Text Content Layer (Overlaid) -->
-            <div class="fv-text-layer fade-in-up">
-                <p class="fv-sub-copy">＼ 誰も教えてくれない ／</p>
-                <h2 class="fv-main-copy">
-                    バズる<span class="gold-text">AI動画</span>の<br>
-                    レシピを<span class="big-emphasis">配布中</span>
-                </h2>
+                    <!-- Zone 1: Above Head -->
+                    <div class="fv-content-top">
+                        <p class="fv-sub-copy">＼ 誰も教えてくれない ／</p>
+                        <h2 class="fv-main-copy">
+                            バズる<span class="gold-text">AI動画</span>の<br>
+                            レシピを<span class="big-emphasis">配布中</span>
+                        </h2>
+                    </div>
 
-                <div class="fv-cta-container">
-                    <a href="#cta" class="cta-button primary-cta pulse-fast">
-                        <span class="cta-sub">＼ 60分の動画講座をプレゼント ／</span>
-                        <span class="cta-main">無料セミナーでレシピをもらう</span>
-                    </a>
-                    <p class="cta-micro">※参加枠には限りがあります</p>
+                    <!-- Zone 2: Face Spacer (Implicitly created by Flex space) -->
+
+                    <!-- Icons (Side placements) -->
+                    <div class="floating-decor screen-1"><i class="fa-brands fa-youtube"></i></div>
+                    <div class="floating-decor screen-2"><i class="fa-brands fa-tiktok"></i></div>
+                    <div class="floating-decor screen-3"><i class="fa-brands fa-instagram"></i></div>
+
+                    <!-- Zone 3: Below Chin -->
+                    <div class="fv-content-bottom">
+                        <div class="fv-cta-container">
+                            <a href="#cta" class="cta-button primary-cta pulse-fast">
+                                <span class="cta-sub">＼ 60分の動画講座をプレゼント ／</span>
+                                <span class="cta-main">無料セミナーでレシピをもらう</span>
+                            </a>
+                            <p class="cta-micro">※参加枠には限りがあります</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Bottom Gold Bar -->
-        <div class="fv-bottom-bar">
-            <p>
-                副業で思うような収入が得られず悩んでいる方限定！<br>
-                AI動画で人生を変える60分。参加して絶対に損はさせません。
-            </p>
-        </div>
+            <!-- Bottom Gold Bar -->
+            <div class="fv-bottom-bar">
+                <p>
+                    副業で思うような収入が得られず悩んでいる方限定！<br>
+                    AI動画で人生を変える60分。参加して絶対に損はさせません。
+                </p>
+            </div>
 
 
     </section>

@@ -140,19 +140,18 @@ a {
    FV: Premium Banner Style (Center Focused)
    ========================================= */
 /* =========================================
-   FV: Premium Banner Style (Stacked Layout to Avoid Overlap)
+   FV: Premium Banner Style (Split Zone Overlay)
    ========================================= */
 .fv-section-new {
     padding-top: var(--header-h);
-    background: linear-gradient(to bottom, #FFF 0%, #FFF5F6 100%);
     position: relative;
     overflow: hidden;
     padding-bottom: 0;
-    /* Let stage handle bottom */
     text-align: center;
+    background: #FFF;
 }
 
-/* Gold Bar - Warmer Tone */
+/* Gold Bar */
 .fv-top-bar,
 .fv-bottom-bar {
     background: var(--c-text-deep);
@@ -178,59 +177,70 @@ a {
     display: inline-block;
 }
 
-/* Main Stage - Flex Stack */
+/* Main Stage - Container */
 .fv-main-stage {
     position: relative;
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    /* Remove fixed height to allow content to dictate, but set min-height */
-    min-height: 800px;
-    background: transparent;
+    /* Fixed Height Strategy for Overlay Control */
+    height: 750px;
     overflow: hidden;
     border-radius: 0 0 30px 30px;
 }
 
-/* Text Layer - Top Block */
-.fv-text-layer {
-    position: relative;
-    width: 100%;
-    z-index: 10;
-    padding-top: 60px;
-    padding-bottom: 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 0 0 auto;
-    /* Do not shrink */
-}
-
-/* Visual Layer - Bottom Block */
+/* Visual Layer - Full Background */
 .fv-visual-layer {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    flex: 1 1 auto;
-    /* Fill remaining space */
-    min-height: 500px;
-    /* Ensure tall enough to show person */
+    height: 100%;
     z-index: 1;
-    margin-top: -20px;
-    /* Slight overlap for blending if needed, but safe */
 }
 
 .fv-hero-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
-    /* Show head at top */
-    mask-image: linear-gradient(to top, black 90%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to top, black 90%, transparent 100%);
+    /* CRITICAL: Push face down to approx 40% line */
+    object-position: center 20%;
+}
+
+/* Text Layer - Overlay Flex Column */
+.fv-text-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Push Top / Bottom apart */
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* Zone 1: Top Content (Text) */
+.fv-content-top {
+    margin-top: 20px;
+    /* Space from top */
+    background: rgba(255, 255, 255, 0.4);
+    /* Subtle legibility boost if hair touches */
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(2px);
+}
+
+/* Zone 3: Bottom Content (CTA) */
+.fv-content-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+    /* Space from bottom */
 }
 
 /* Content Styles */
@@ -272,11 +282,10 @@ a {
 /* FV CTA - Positioned Absolute at Bottom of Stage */
 .fv-cta-container {
     width: 100%;
-    position: absolute;
-    bottom: 30px;
-    left: 0;
-    z-index: 20;
-    padding: 0 20px;
+    position: relative;
+    /* Reset from absolute */
+    bottom: auto;
+    left: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
