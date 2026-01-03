@@ -1,30 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Montserrat:wght@700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap');
 
 :root {
-    /* Palette - High Contrast & Modern */
-    --c-primary: #FF2D55;
-    /* Vibrant Neon Rose */
-    --c-primary-dark: #D00036;
-    --c-secondary: #007AFF;
-    /* Tech Blue */
-    --c-bg-pure: #FFFFFF;
-    --c-bg-sub: #F2F2F7;
-    --c-text-deep: #1C1C1E;
-    --c-text-body: #3A3A3C;
-    --c-gold: #D4AF37;
+    /* Palette - Nordic Natural */
+    --c-primary: #E89B99;
+    /* Soft Coral Pink */
+    --c-primary-dark: #D47E7C;
+    --c-secondary: #8DAF9E;
+    /* Sage Green */
+    --c-bg-pure: #F9F8F6;
+    /* Warm White */
+    --c-bg-sub: #F0EFE9;
+    /* Beige Gray */
+    --c-text-deep: #5A544B;
+    /* Warm Charcoal */
+    --c-text-body: #787268;
+    --c-accent: #E8C37E;
+    /* Soft Gold */
 
-    /* Typography - More Modern & Assertive */
-    --f-sans: 'Inter', 'Noto Sans JP', sans-serif;
-    --f-head: 'Montserrat', 'Noto Sans JP', sans-serif;
+    /* Typography - Friendly & Round */
+    --f-sans: 'Noto Sans JP', sans-serif;
+    --f-head: 'Zen Maru Gothic', sans-serif;
 
     /* Spacing */
-    --header-h: 80px;
+    --header-h: 70px;
 
     /* Effects */
-    --shadow-lv1: 0 4px 20px rgba(0, 0, 0, 0.06);
-    --shadow-lv2: 0 20px 40px rgba(0, 0, 0, 0.12);
-    --glass: rgba(255, 255, 255, 0.8);
-    --neon-gradient: linear-gradient(90deg, var(--c-primary) 0%, #FF5E7B 100%);
+    --shadow-lv1: 0 4px 15px rgba(90, 84, 75, 0.05);
+    --shadow-lv2: 0 10px 30px rgba(90, 84, 75, 0.08);
+    --glass: rgba(255, 255, 255, 0.6);
+    --radius-lg: 24px;
 }
 
 .marker-highlight {
@@ -160,7 +164,7 @@ a {
 }
 
 .fv-bottom-bar {
-    background: linear-gradient(90deg, #C6A665 0%, #E3CD94 50%, #C6A665 100%);
+    background: #E8C37E;
     color: white;
     font-weight: 700;
 }
@@ -215,26 +219,29 @@ a {
 }
 
 /* Content Styles */
+/* Content Styles */
 .fv-sub-copy {
     display: inline-block;
     font-family: var(--f-head);
     font-weight: 700;
-    color: white;
-    background: var(--c-text-deep);
-    padding: 8px 20px;
-    font-size: 0.9rem;
+    color: var(--c-text-deep);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    border-radius: 50px;
+    padding: 8px 24px;
+    font-size: 0.95rem;
     margin-bottom: 24px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
 }
 
 .fv-main-copy {
     font-family: var(--f-head);
     font-weight: 900;
-    font-size: 3.8rem;
+    font-size: 3.4rem;
     color: var(--c-text-deep);
-    line-height: 1.1;
+    line-height: 1.3;
     margin-bottom: 40px;
-    letter-spacing: -0.04em;
+    letter-spacing: 0.02em;
 }
 
 .gold-text {
@@ -262,19 +269,21 @@ a {
     align-items: center;
     justify-content: center;
     gap: 15px;
-    background: #06C755;
+    background: #8DAF9E;
+    /* Natural Green */
     color: white;
     width: 100%;
-    max-width: 450px;
+    max-width: 480px;
     padding: 20px;
     border-radius: 50px;
-    box-shadow: 0 8px 15px rgba(6, 199, 85, 0.25);
+    box-shadow: 0 8px 20px rgba(141, 175, 158, 0.4);
     font-weight: 700;
     font-size: 1.1rem;
     transition: transform 0.2s, box-shadow 0.2s;
     text-decoration: none;
     margin: 0 auto;
-    /* Force Center */
+    border: 3px solid white;
+    /* Cute border */
 }
 
 .cta-button:hover {
@@ -660,43 +669,41 @@ a {
         font-size: 1.2rem;
     }
 
-    /* FV Mobile - Improved Overlap Prevention */
+    /* FV Mobile - Natural Overlay */
     .fv-visual-layer {
         position: relative;
         width: 100%;
-        height: 60vh;
-        top: auto;
-        right: auto;
-        bottom: auto;
+        height: 55vh;
+        z-index: 1;
     }
 
     .fv-hero-img {
         width: 100%;
         height: 100%;
-        position: relative;
-        border-radius: 0;
-        mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-        -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        object-fit: cover;
+        mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
     }
 
     .fv-text-layer {
         width: 100%;
-        margin: -80px 0 0;
-        padding: 40px 20px;
-        background: white;
-        border-radius: 30px 30px 0 0;
+        margin-top: -120px;
+        /* Overlap upwards */
+        padding: 0 20px 40px;
         position: relative;
-        z-index: 20;
-        align-items: center;
+        z-index: 10;
         text-align: center;
-        box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.1);
+        background: transparent;
+        box-shadow: none;
+        border-radius: 0;
     }
 
     .fv-main-copy {
-        font-size: 2.5rem;
-        margin-bottom: 30px;
-        text-align: center;
-        line-height: 1.2;
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        color: var(--c-text-deep);
+        text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+        /* Readability */
     }
 
     .screen-1 {
