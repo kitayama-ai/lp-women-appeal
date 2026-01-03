@@ -261,13 +261,17 @@ a {
 }
 
 /* FV CTA (Separate from Global) */
+/* FV CTA - Position Lower to avoid Face */
 .fv-cta-container {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 40px auto;
+    margin-top: auto;
+    /* Push to bottom if flex container has height */
+    position: absolute;
+    bottom: 40px;
+    /* Pin to bottom area */
+    left: 0;
+    z-index: 20;
+    padding: 0 20px;
 }
 
 /* Global CTA Button */
@@ -334,24 +338,30 @@ a {
     z-index: 5;
 }
 
+/* Decor - Avoid Face (Center) Area */
 .screen-1 {
     color: #FF0000;
-    top: 15%;
-    left: 48%;
+    top: 10%;
+    left: 10%;
+    /* Move far left */
     animation: float 6s infinite ease-in-out;
 }
 
 .screen-2 {
     color: #000;
-    bottom: 40%;
-    left: 42%;
+    bottom: 20%;
+    right: 10%;
+    /* Move far right bottom */
+    left: auto;
     animation: float 8s infinite ease-in-out reverse;
 }
 
 .screen-3 {
     color: #E1306C;
-    top: 40%;
-    left: 52%;
+    top: 15%;
+    right: 10%;
+    /* Move far right top */
+    left: auto;
     animation: float 7s infinite ease-in-out;
 }
 
@@ -368,6 +378,14 @@ a {
 }
 
 /* Section Headers */
+.section-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
 .section-title-sm {
     font-family: var(--f-head);
     font-size: 2.8rem;
@@ -377,6 +395,9 @@ a {
     position: relative;
     display: inline-block;
     padding-bottom: 15px;
+    /* Ensure Centering */
+    margin: 0 auto;
+    text-align: center;
 }
 
 .section-title-sm::before {
@@ -402,6 +423,19 @@ a {
     background: var(--c-gold);
 }
 
+/* Problem Section & Checklist */
+.problem-bridge {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px auto;
+}
+
+.bridge-copy {
+    text-align: center;
+}
+
 .problem-checklist {
     max-width: 850px;
     margin: 40px auto;
@@ -411,9 +445,14 @@ a {
     border-radius: 20px;
     box-shadow: var(--shadow-lv2);
     padding: 20px;
-    text-align: left;
+    /* Center text inside */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* Centered Check Items but keeping internal layout */
 .check-item {
     display: flex;
     align-items: center;
@@ -422,6 +461,12 @@ a {
     padding: 24px;
     border-radius: 12px;
     transition: transform 0.3s;
+    width: 100%;
+    /* Full width in container */
+    max-width: 700px;
+    /* Limit width */
+    text-align: left;
+    /* Keep internal text left logic */
 }
 
 .check-item:hover {
